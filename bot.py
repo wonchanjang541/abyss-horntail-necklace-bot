@@ -12,7 +12,7 @@ def init_db():
  c=con(); c.execute('''CREATE TABLE IF NOT EXISTS item(user_id INTEGER PRIMARY KEY,base_str INTEGER,base_dex INTEGER,base_int INTEGER,base_luk INTEGER,str_stat INTEGER,dex INTEGER,int_stat INTEGER,luk INTEGER,atk INTEGER DEFAULT 3,matk INTEGER DEFAULT 3,pdef INTEGER DEFAULT 300,mdef INTEGER DEFAULT 300,avoid INTEGER DEFAULT 40,slots INTEGER DEFAULT 2,success_count INTEGER DEFAULT 0,destroyed INTEGER DEFAULT 0,lock_str INTEGER DEFAULT 0,lock_dex INTEGER DEFAULT 0,lock_int INTEGER DEFAULT 0,lock_luk INTEGER DEFAULT 0,lock_atk INTEGER DEFAULT 0,lock_matk INTEGER DEFAULT 0,lock_pdef INTEGER DEFAULT 0,lock_mdef INTEGER DEFAULT 0,lock_avoid INTEGER DEFAULT 0)'''); c.commit(); c.close()
 
 def roll(uid):
- s=[random.randint(25,29) for _ in range(4)]; c=con(); c.execute('INSERT OR REPLACE INTO item VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',(uid,*s,*s,3,3,300,300,40,2,0,0,0,0,0,0,0,0,0,0)); c.commit(); c.close()
+ s=[random.randint(25,29) for _ in range(4)]; c=con(); c.execute('INSERT OR REPLACE INTO item VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',(uid,*s,*s,3,3,300,300,40,2,0,0,0,0,0,0,0,0,0,0,0)); c.commit(); c.close()
 
 def get(uid):
  c=con(); r=c.execute('SELECT * FROM item WHERE user_id=?',(uid,)).fetchone(); c.close()
